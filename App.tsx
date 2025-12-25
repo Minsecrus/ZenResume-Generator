@@ -15,10 +15,10 @@ declare global {
 
 const App: React.FC = () => {
   const [resumeData, setResumeData] = useState<ResumeData>(() => {
-     const saved = localStorage.getItem('zenresume_data');
-     return saved ? JSON.parse(saved) : INITIAL_RESUME_DATA;
+    const saved = localStorage.getItem('zenresume_data');
+    return saved ? JSON.parse(saved) : INITIAL_RESUME_DATA;
   });
-  
+
   const [isEditorOpen, setIsEditorOpen] = useState(true);
   const [isDownloading, setIsDownloading] = useState(false);
 
@@ -28,66 +28,26 @@ const App: React.FC = () => {
   }, [resumeData]);
 
   const handleDownloadPDF = async () => {
-    if (!window.html2pdf) {
-      alert("PDF generator is initializing, please try again in a moment.");
-      return;
-    }
-
-    setIsDownloading(true);
-    const element = document.getElementById('resume-preview');
-    
-    if (!element) {
-      setIsDownloading(false);
-      return;
-    }
-
-    // Temporary style adjustments for cleaner PDF
-    const originalShadow = element.style.boxShadow;
-    element.style.boxShadow = 'none';
-
-    const opt = {
-      margin:       0, // We use the component's padding as margin
-      filename:     `Resume_${resumeData.fullName.replace(/\s+/g, '_')}.pdf`,
-      image:        { type: 'jpeg', quality: 0.98 },
-      html2canvas:  { 
-        scale: 4, // Higher scale for better resolution
-        useCORS: true, 
-        logging: false,
-        letterRendering: true,
-      },
-      jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' },
-      pagebreak:    { mode: ['avoid-all', 'css', 'legacy'] }
-    };
-
-    try {
-      await window.html2pdf().set(opt).from(element).save();
-    } catch (error) {
-      console.error('PDF generation failed:', error);
-      alert('Failed to generate PDF. Please try again.');
-    } finally {
-      // Restore styles
-      element.style.boxShadow = originalShadow;
-      setIsDownloading(false);
-    }
+    window.print();
   };
 
   return (
     <div className="min-h-screen flex flex-col h-screen overflow-hidden font-sans">
-      
+
       {/* Top Bar - No Print */}
       <nav className="h-16 border-b border-gray-200 bg-white flex items-center justify-between px-4 md:px-6 shrink-0 z-30 no-print">
         <div className="flex items-center gap-2">
-           <div className="w-8 h-8 bg-black rounded-lg flex items-center justify-center">
-             <LayoutTemplate className="text-white w-5 h-5" />
-           </div>
-           <span className="font-bold text-lg tracking-tight hidden sm:inline-block">ZenResume</span>
-           <span className="text-xs bg-gray-100 text-gray-500 px-2 py-0.5 rounded-full border border-gray-200">Beta</span>
+          <div className="w-8 h-8 bg-black rounded-lg flex items-center justify-center">
+            <LayoutTemplate className="text-white w-5 h-5" />
+          </div>
+          <span className="font-bold text-lg tracking-tight hidden sm:inline-block">ZenResume</span>
+          <span className="text-xs bg-gray-100 text-gray-500 px-2 py-0.5 rounded-full border border-gray-200">Beta</span>
         </div>
 
         <div className="flex items-center gap-3">
-          <Button 
-            variant="ghost" 
-            size="sm" 
+          <Button
+            variant="ghost"
+            size="sm"
             className="md:hidden"
             onClick={() => setIsEditorOpen(!isEditorOpen)}
           >
@@ -95,9 +55,9 @@ const App: React.FC = () => {
             {isEditorOpen ? 'View' : 'Edit'}
           </Button>
 
-          <Button 
-            variant="outline" 
-            size="sm" 
+          <Button
+            variant="outline"
+            size="sm"
             onClick={() => setResumeData(INITIAL_RESUME_DATA)}
             className="hidden md:flex"
             title="Reset to default template"
@@ -113,9 +73,9 @@ const App: React.FC = () => {
       </nav>
 
       <main className="flex-1 flex overflow-hidden relative">
-        
+
         {/* Editor Sidebar */}
-        <div 
+        <div
           className={`
             fixed md:relative inset-y-0 left-0 w-full md:w-auto 
             transform ${isEditorOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0 md:hidden'} 
@@ -130,8 +90,8 @@ const App: React.FC = () => {
         {/* Preview Area */}
         <div className="flex-1 overflow-y-auto bg-gray-100/50 p-4 md:p-8 lg:p-12 flex justify-center">
           <div className="w-full max-w-[210mm]">
-             <ResumePreview data={resumeData} />
-             <div className="h-20 no-print"></div> {/* Bottom spacer */}
+            <ResumePreview data={resumeData} />
+            <div className="h-20 no-print"></div> {/* Bottom spacer */}
           </div>
         </div>
 
@@ -139,7 +99,7 @@ const App: React.FC = () => {
 
       {/* Mobile Editor Toggle Overlay - Closes editor when clicking outside on mobile */}
       {isEditorOpen && (
-        <div 
+        <div
           className="fixed inset-0 bg-black/20 z-10 md:hidden no-print"
           onClick={() => setIsEditorOpen(false)}
         ></div>
