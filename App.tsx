@@ -140,11 +140,11 @@ const App: React.FC = () => {
                 <div>
                   <h3 className="font-semibold text-gray-900 mb-2">🛠️ 工作原理</h3>
                   <p className="mb-2">
-                    ZenResume 采用<strong>本地优先 (Local-First)</strong> 的架构设计。这意味着您的所有隐私数据仅存储在当前浏览器的 LocalStorage 中，<strong>绝不会上传至任何云端服务器</strong>。
+                    ZenResume 采用<strong>本地优先 (Local-First)</strong> 的架构设计。您的所有隐私数据仅存储在当前浏览器的 LocalStorage 中，<strong>绝不会上传至任何云端服务器</strong>。
                   </p>
                   <ul className="list-disc pl-5 space-y-1 text-gray-500">
                     <li>无需注册登录，即开即用。</li>
-                    <li>利用浏览器原生打印引擎生成高质量 PDF。</li>
+                    <li>利用浏览器原生打印引擎生成高质量 PDF。（记得在打印页面里面取消勾选页眉和页脚）</li>
                     <li>实时渲染，所见即所得。</li>
                   </ul>
                 </div>

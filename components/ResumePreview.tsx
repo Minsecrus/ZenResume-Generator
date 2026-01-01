@@ -6,18 +6,10 @@ interface ResumePreviewProps {
   data: ResumeData;
 }
 
-interface PageBreak {
-  before: string;
-  after: string;
-}
-
-// --- 配置参数 ---
 const HEADER_HEIGHT = 80;
-const SUMMARY_HEIGHT = 60; // 稍微增加预估高度
-// 关键：设为 240mm (A4 297 - 上下边距 40 - 缓冲 17)，确保内容绝不溢出
-const PAGE_CONTENT_HEIGHT = 240;
+const SUMMARY_HEIGHT = 60;
+const PAGE_CONTENT_HEIGHT = 250;
 
-// 估算每项的高度权重
 const ITEM_HEIGHTS = {
   experience: 90,
   project: 60,
