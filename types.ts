@@ -34,6 +34,7 @@ export interface ResumeData {
   education: Education[];
   skills: string[];
   projects: Project[];
+  enablePagination?: boolean;
 }
 
 export type SectionType = 'summary' | 'experience' | 'education' | 'project';

@@ -1,0 +1,17 @@
+@media print {
+    @page {
+        /* 设置页面的上下左右边距 */
+        margin-top: 20mm;
+        margin-bottom: 20mm;
+        margin-left: 20mm;
+        margin-right: 20mm;
+
+        /* 或者简写 */
+        /* margin: 20mm; */
+    }
+
+    /* 确保 body 没有多余的边距干扰 */
+    body {
+        margin: 0;
+    }
+}

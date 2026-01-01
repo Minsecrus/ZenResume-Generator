@@ -58,7 +58,7 @@ export const ResumeEditor: React.FC<ResumeEditorProps> = ({ data, onChange }) =>
   };
 
   const SectionHeader = ({ title, sectionKey }: { title: string, sectionKey: string }) => (
-    <button 
+    <button
       onClick={() => toggleSection(sectionKey)}
       className="flex items-center justify-between w-full py-3 px-4 bg-white hover:bg-gray-50 border-b border-gray-100 transition-colors"
     >
@@ -75,7 +75,6 @@ export const ResumeEditor: React.FC<ResumeEditorProps> = ({ data, onChange }) =>
       </div>
 
       <div className="flex-1 overflow-y-auto">
-        {/* Personal Info */}
         <div className="border-b border-gray-200">
           <SectionHeader title="Personal Info" sectionKey="personal" />
           {activeSection === 'personal' && (
@@ -110,52 +109,50 @@ export const ResumeEditor: React.FC<ResumeEditorProps> = ({ data, onChange }) =>
           )}
         </div>
 
-        {/* Summary */}
         <div className="border-b border-gray-200">
           <SectionHeader title="Summary" sectionKey="summary" />
           {activeSection === 'summary' && (
             <div className="p-4 bg-white">
-               <label className="block text-xs font-medium text-gray-700 mb-1">Professional Summary</label>
+              <label className="block text-xs font-medium text-gray-700 mb-1">Professional Summary</label>
               <div className="relative">
-                <textarea 
-                  name="summary" 
+                <textarea
+                  name="summary"
                   rows={6}
-                  value={data.summary} 
-                  onChange={handleInputChange} 
-                  className="w-full p-2 border border-gray-300 rounded-md text-sm focus:ring-2 focus:ring-black focus:border-transparent outline-none resize-none" 
+                  value={data.summary}
+                  onChange={handleInputChange}
+                  className="w-full p-2 border border-gray-300 rounded-md text-sm focus:ring-2 focus:ring-black focus:border-transparent outline-none resize-none"
                 />
               </div>
             </div>
           )}
         </div>
 
-        {/* Experience */}
         <div className="border-b border-gray-200">
           <SectionHeader title="Experience" sectionKey="experience" />
           {activeSection === 'experience' && (
             <div className="p-4 bg-white space-y-6">
               {data.experience.map((exp, index) => (
                 <div key={exp.id} className="p-3 border border-gray-200 rounded-lg relative group">
-                  <button 
+                  <button
                     onClick={() => removeItem('experience', index)}
                     className="absolute top-2 right-2 text-gray-400 hover:text-red-500 opacity-0 group-hover:opacity-100 transition-opacity"
                   >
                     <Trash2 className="w-4 h-4" />
                   </button>
                   <div className="grid grid-cols-2 gap-2 mb-2">
-                    <input 
+                    <input
                       placeholder="Company"
                       value={exp.company}
                       onChange={(e) => handleArrayChange('experience', index, 'company', e.target.value)}
                       className="text-sm font-semibold border-b border-transparent focus:border-gray-300 outline-none"
                     />
-                    <input 
+                    <input
                       placeholder="Role"
                       value={exp.role}
                       onChange={(e) => handleArrayChange('experience', index, 'role', e.target.value)}
                       className="text-sm border-b border-transparent focus:border-gray-300 outline-none"
                     />
-                     <input 
+                    <input
                       placeholder="Dates"
                       value={exp.dates}
                       onChange={(e) => handleArrayChange('experience', index, 'dates', e.target.value)}
@@ -163,7 +160,7 @@ export const ResumeEditor: React.FC<ResumeEditorProps> = ({ data, onChange }) =>
                     />
                   </div>
                   <div className="relative">
-                    <textarea 
+                    <textarea
                       placeholder="Description"
                       rows={4}
                       value={exp.description}
@@ -180,40 +177,39 @@ export const ResumeEditor: React.FC<ResumeEditorProps> = ({ data, onChange }) =>
           )}
         </div>
 
-         {/* Education */}
-         <div className="border-b border-gray-200">
+        <div className="border-b border-gray-200">
           <SectionHeader title="Education" sectionKey="education" />
           {activeSection === 'education' && (
             <div className="p-4 bg-white space-y-6">
               {data.education.map((edu, index) => (
                 <div key={edu.id} className="p-3 border border-gray-200 rounded-lg relative group">
-                  <button 
+                  <button
                     onClick={() => removeItem('education', index)}
                     className="absolute top-2 right-2 text-gray-400 hover:text-red-500 opacity-0 group-hover:opacity-100 transition-opacity"
                   >
                     <Trash2 className="w-4 h-4" />
                   </button>
-                   <div className="grid grid-cols-1 gap-2 mb-2">
-                    <input 
+                  <div className="grid grid-cols-1 gap-2 mb-2">
+                    <input
                       placeholder="School"
                       value={edu.school}
                       onChange={(e) => handleArrayChange('education', index, 'school', e.target.value)}
                       className="text-sm font-semibold border-b border-transparent focus:border-gray-300 outline-none"
                     />
-                    <input 
+                    <input
                       placeholder="Degree"
                       value={edu.degree}
                       onChange={(e) => handleArrayChange('education', index, 'degree', e.target.value)}
                       className="text-sm border-b border-transparent focus:border-gray-300 outline-none"
                     />
-                     <input 
+                    <input
                       placeholder="Dates"
                       value={edu.dates}
                       onChange={(e) => handleArrayChange('education', index, 'dates', e.target.value)}
                       className="text-xs text-gray-500 border-b border-transparent focus:border-gray-300 outline-none"
                     />
                   </div>
-                  <textarea 
+                  <textarea
                     placeholder="Description (optional)"
                     rows={2}
                     value={edu.description}
@@ -229,66 +225,64 @@ export const ResumeEditor: React.FC<ResumeEditorProps> = ({ data, onChange }) =>
           )}
         </div>
 
-        {/* Projects */}
-         <div className="border-b border-gray-200">
+        <div className="border-b border-gray-200">
           <SectionHeader title="Projects" sectionKey="projects" />
           {activeSection === 'projects' && (
             <div className="p-4 bg-white space-y-6">
               {data.projects.map((proj, index) => (
                 <div key={proj.id} className="p-3 border border-gray-200 rounded-lg relative group">
-                   <button 
+                  <button
                     onClick={() => removeItem('projects', index)}
                     className="absolute top-2 right-2 text-gray-400 hover:text-red-500 opacity-0 group-hover:opacity-100 transition-opacity"
                   >
                     <Trash2 className="w-4 h-4" />
                   </button>
-                  <input 
-                      placeholder="Project Name"
-                      value={proj.name}
-                      onChange={(e) => handleArrayChange('projects', index, 'name', e.target.value)}
-                      className="text-sm font-semibold w-full border-b border-transparent focus:border-gray-300 outline-none mb-2"
+                  <input
+                    placeholder="Project Name"
+                    value={proj.name}
+                    onChange={(e) => handleArrayChange('projects', index, 'name', e.target.value)}
+                    className="text-sm font-semibold w-full border-b border-transparent focus:border-gray-300 outline-none mb-2"
                   />
-                  <input 
-                      placeholder="Link (optional)"
-                      value={proj.link || ''}
-                      onChange={(e) => handleArrayChange('projects', index, 'link', e.target.value)}
-                      className="text-xs text-gray-500 w-full border-b border-transparent focus:border-gray-300 outline-none mb-2"
+                  <input
+                    placeholder="Link (optional)"
+                    value={proj.link || ''}
+                    onChange={(e) => handleArrayChange('projects', index, 'link', e.target.value)}
+                    className="text-xs text-gray-500 w-full border-b border-transparent focus:border-gray-300 outline-none mb-2"
                   />
-                  <textarea 
+                  <textarea
                     placeholder="Description"
                     rows={2}
                     value={proj.description}
                     onChange={(e) => handleArrayChange('projects', index, 'description', e.target.value)}
                     className="w-full text-sm p-2 bg-gray-50 rounded border-none focus:ring-1 focus:ring-gray-200 resize-none mb-2"
                   />
-                   <input 
-                      placeholder="Tech Stack (comma separated)"
-                      value={proj.technologies.join(', ')}
-                      onChange={(e) => handleArrayChange('projects', index, 'technologies', e.target.value.split(',').map(s => s.trim()))}
-                      className="text-xs w-full p-1 bg-gray-50 rounded border-none focus:ring-1 focus:ring-gray-200"
+                  <input
+                    placeholder="Tech Stack (comma separated)"
+                    value={proj.technologies.join(', ')}
+                    onChange={(e) => handleArrayChange('projects', index, 'technologies', e.target.value.split(',').map(s => s.trim()))}
+                    className="text-xs w-full p-1 bg-gray-50 rounded border-none focus:ring-1 focus:ring-gray-200"
                   />
                 </div>
               ))}
-               <Button onClick={() => addItem('projects')} variant="outline" className="w-full border-dashed">
+              <Button onClick={() => addItem('projects')} variant="outline" className="w-full border-dashed">
                 <Plus className="w-4 h-4 mr-2" /> Add Project
               </Button>
             </div>
           )}
         </div>
 
-        {/* Skills */}
         <div className="border-b border-gray-200 mb-20">
-           <SectionHeader title="Skills" sectionKey="skills" />
-           {activeSection === 'skills' && (
-             <div className="p-4 bg-white">
-                <p className="text-xs text-gray-500 mb-2">Separate skills with commas</p>
-                <textarea 
-                  className="w-full p-2 border border-gray-300 rounded-md text-sm h-32"
-                  value={data.skills.join(', ')}
-                  onChange={(e) => onChange({...data, skills: e.target.value.split(',').map(s => s.trim())})}
-                />
-             </div>
-           )}
+          <SectionHeader title="Skills" sectionKey="skills" />
+          {activeSection === 'skills' && (
+            <div className="p-4 bg-white">
+              <p className="text-xs text-gray-500 mb-2">Separate skills with commas</p>
+              <textarea
+                className="w-full p-2 border border-gray-300 rounded-md text-sm h-32"
+                value={data.skills.join(', ')}
+                onChange={(e) => onChange({ ...data, skills: e.target.value.split(',').map(s => s.trim()) })}
+              />
+            </div>
+          )}
         </div>
       </div>
     </div>
