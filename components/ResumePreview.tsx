@@ -75,12 +75,12 @@ export const ResumePreview: React.FC<ResumePreviewProps> = ({ data }) => {
         className={`
           resume-page bg-white w-[210mm] mx-auto shadow-2xl transition-all duration-300 relative
           min-h-[296mm]
-          print:w-full print:min-h-0 print:h-auto print:shadow-none print:border-none print:overflow-hidden
-          ${isLastPage ? 'print:break-after-auto' : 'print:break-after-page'} 
+          print:w-full print:min-h-0 print:h-auto print:shadow-none print:border-none print:overflow-visible
+          ${isLastPage ? 'print:break-after-auto' : 'print:break-after-page'}
         `}
         style={{
           marginBottom: !isLastPage && data.enablePagination ? '20px' : '0',
-          padding: '15mm 15mm 15mm 20mm',
+          padding: '14mm',
         }}
       >
         {!isLastPage && data.enablePagination && (
@@ -91,11 +91,11 @@ export const ResumePreview: React.FC<ResumePreviewProps> = ({ data }) => {
 
         <div className="print:pt-0">
           {showHeader && (
-            <header className="border-b border-gray-200 pb-8 mb-8 break-inside-avoid">
-              <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-gray-900 mb-2 uppercase">{data.fullName}</h1>
-              <p className="text-xl text-gray-500 font-light mb-6 tracking-wide">{data.title}</p>
+            <header className="border-b border-gray-200 pb-4 mb-3 break-inside-avoid">
+              <h1 className="text-4xl font-bold tracking-tight text-gray-900 mb-1 uppercase">{data.fullName}</h1>
+              <p className="text-lg text-gray-500 font-light mb-4 tracking-wide">{data.title}</p>
 
-              <div className="flex flex-wrap gap-4 text-sm text-gray-600">
+              <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-gray-600">
                 {data.email && <div className="flex items-center gap-1.5"><Mail className="w-4 h-4" /><span>{data.email}</span></div>}
                 {data.phone && <div className="flex items-center gap-1.5"><Phone className="w-4 h-4" /><span>{data.phone}</span></div>}
                 {data.location && <div className="flex items-center gap-1.5"><MapPin className="w-4 h-4" /><span>{data.location}</span></div>}
@@ -105,25 +105,25 @@ export const ResumePreview: React.FC<ResumePreviewProps> = ({ data }) => {
           )}
 
           {hasSection(pageContent, 'summary') && data.summary && (
-            <section className="mb-10 break-inside-avoid">
-              <h2 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">Profile</h2>
-              <p className="text-gray-800 leading-relaxed text-sm md:text-base">{data.summary}</p>
+            <section className="mb-4 break-inside-avoid">
+              <h2 className="text-xs font-bold text-gray-600 uppercase tracking-widest mb-2">Profile</h2>
+              <p className="text-gray-800 leading-normal text-sm">{data.summary}</p>
             </section>
           )}
         </div>
 
         {hasSection(pageContent, 'experience') && data.experience.length > 0 && (
-          <section className="mb-10">
-            <h2 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-6">Experience</h2>
-            <div className="space-y-8">
+          <section className="mb-3">
+            <h2 className="text-xs font-bold text-gray-600 uppercase tracking-widest mb-2">Experience</h2>
+            <div className="space-y-3">
               {data.experience.map((exp) => (
                 <div key={exp.id} className="group break-inside-avoid">
-                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-2">
-                    <h3 className="text-lg font-semibold text-gray-900">{exp.role}</h3>
-                    <span className="text-sm text-gray-500 font-medium tabular-nums">{exp.dates}</span>
+                  <div className="flex justify-between items-baseline gap-4 mb-0.5">
+                    <h3 className="text-base font-semibold text-gray-900">{exp.role}</h3>
+                    <span className="text-sm text-gray-500 font-medium tabular-nums shrink-0">{exp.dates}</span>
                   </div>
-                  <div className="text-sm text-gray-600 font-medium mb-2">{exp.company}</div>
-                  <p className="text-sm text-gray-700 leading-relaxed whitespace-pre-wrap">{exp.description}</p>
+                  <div className="text-sm text-gray-600 font-medium mb-1">{exp.company}</div>
+                  <p className="text-sm text-gray-700 leading-normal whitespace-pre-wrap">{exp.description}</p>
                 </div>
               ))}
             </div>
@@ -131,18 +131,18 @@ export const ResumePreview: React.FC<ResumePreviewProps> = ({ data }) => {
         )}
 
         {hasSection(pageContent, 'projects') && data.projects.length > 0 && (
-          <section className="mb-10">
-            <h2 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-6">Projects</h2>
-            <div className="space-y-6">
+          <section className="mb-3">
+            <h2 className="text-xs font-bold text-gray-600 uppercase tracking-widest mb-2">Projects</h2>
+            <div className="space-y-3">
               {data.projects.map((proj) => (
                 <div key={proj.id} className="break-inside-avoid">
-                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1">
+                  <div className="flex justify-between items-baseline gap-4 mb-1">
                     <h3 className="text-base font-semibold text-gray-900">
                       {proj.name}
                       {proj.link && <span className="ml-2 text-xs font-normal text-gray-400">({proj.link})</span>}
                     </h3>
                   </div>
-                  <p className="text-sm text-gray-700 leading-relaxed mb-2">{proj.description}</p>
+                  <p className="text-sm text-gray-700 leading-normal mb-1.5">{proj.description}</p>
                   {proj.technologies && proj.technologies.length > 0 && (
                     <div className="flex flex-wrap gap-2">
                       {proj.technologies.map(tech => (
@@ -158,16 +158,16 @@ export const ResumePreview: React.FC<ResumePreviewProps> = ({ data }) => {
           </section>
         )}
 
-        <div className="grid grid-cols-1 md:grid-cols-2 print:grid-cols-2 gap-6">
+        <div className="grid grid-cols-2 gap-8">
           {hasSection(pageContent, 'education') && data.education.length > 0 && (
             <section className="break-inside-avoid">
-              <h2 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-6">Education</h2>
-              <div className="space-y-6">
+              <h2 className="text-xs font-bold text-gray-600 uppercase tracking-widest mb-2">Education</h2>
+              <div className="space-y-4">
                 {data.education.map((edu) => (
                   <div key={edu.id} className="break-inside-avoid">
                     <h3 className="text-base font-semibold text-gray-900">{edu.school}</h3>
                     <div className="text-sm text-gray-600 mb-1">{edu.degree}</div>
-                    <div className="text-xs text-gray-400 tabular-nums mb-2">{edu.dates}</div>
+                    <div className="text-xs text-gray-500 tabular-nums mb-1">{edu.dates}</div>
                     <p className="text-sm text-gray-700">{edu.description}</p>
                   </div>
                 ))}
@@ -177,10 +177,10 @@ export const ResumePreview: React.FC<ResumePreviewProps> = ({ data }) => {
 
           {hasSection(pageContent, 'skills') && data.skills.length > 0 && (
             <section className="break-inside-avoid">
-              <h2 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-6">Skills</h2>
-              <div className="flex flex-wrap gap-2">
-                {data.skills.map((skill, index) => (
-                  <span key={index} className="inline-block bg-black text-white text-xs font-medium px-3 py-1.5 rounded-full">
+              <h2 className="text-xs font-bold text-gray-600 uppercase tracking-widest mb-2">Skills</h2>
+              <div className="flex flex-wrap gap-1.5">
+                {data.skills.filter(Boolean).map((skill, index) => (
+                  <span key={index} className="inline-block bg-gray-100 text-gray-700 text-xs font-medium px-2 py-0.5 rounded">
                     {skill}
                   </span>
                 ))}

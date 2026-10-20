@@ -1,17 +1,77 @@
 @media print {
     @page {
-        /* 设置页面的上下左右边距 */
-        margin-top: 20mm;
-        margin-bottom: 20mm;
-        margin-left: 20mm;
-        margin-right: 20mm;
-
-        /* 或者简写 */
-        /* margin: 20mm; */
+        /* margin 必须为 0，Chrome 才会把页眉页脚（日期、标题、URL、页码）一起去掉。
+           页边距放在 .resume-page 的 padding 上，不要再写到 body 或 @page。 */
+        size: A4;
+        margin: 0;
     }
 
-    /* 确保 body 没有多余的边距干扰 */
-    body {
-        margin: 0;
+    html,
+    body,
+    #root {
+        height: auto !important;
+        min-height: 0 !important;
+        overflow: visible !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: white !important;
+    }
+
+    nav,
+    button,
+    .no-print,
+    .fixed,
+    aside,
+    [role="dialog"] {
+        display: none !important;
+    }
+
+    main,
+    .overflow-hidden,
+    .overflow-y-auto {
+        height: auto !important;
+        overflow: visible !important;
+        display: block !important;
+        position: static !important;
+    }
+
+    .resume-preview {
+        width: 100%;
+    }
+
+    .resume-page {
+        width: 100% !important;
+        height: auto !important;
+        min-height: 0 !important;
+        margin: 0 !important;
+        box-shadow: none !important;
+        border: none !important;
+        background: white !important;
+        -webkit-box-decoration-break: clone;
+        box-decoration-break: clone;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .resume-page:not(:last-child) {
+        break-after: page;
+        page-break-after: always;
+    }
+
+    .break-inside-avoid {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    h1,
+    h2,
+    h3 {
+        break-after: avoid;
+        page-break-after: avoid;
+    }
+
+    a {
+        text-decoration: none !important;
+        color: inherit !important;
     }
 }
