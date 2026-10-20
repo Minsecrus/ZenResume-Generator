@@ -7,28 +7,28 @@ export const INITIAL_RESUME_DATA: ResumeData = {
   phone: "+1 (555) 123-4567",
   location: "San Francisco, CA",
   website: "https://alexchen.design",
-  summary: "Product designer with 8 years of experience bridging design and engineering. Focused on design systems, minimalist UI, and accessible product flows for fintech and healthcare teams.",
+  summary: "Award-winning product designer with over 8 years of experience in bridging the gap between design and engineering. Specialized in building scalable design systems, minimalist UI, and accessible UX. Proven track record of leading cross-functional teams and delivering high-impact projects for fintech and healthcare startups.",
   experience: [
     {
       id: "exp-1",
       company: "Linear & Co.",
       role: "Lead Product Designer",
       dates: "2021 - Present",
-      description: "Led the mobile redesign (+40% retention) and built Polaris, the design system used by 30+ engineers."
+      description: "Spearheaded the redesign of the core mobile application, resulting in a 40% increase in user retention. Established a comprehensive design system (Polaris) used by 30+ engineers and designers. Mentored junior designers and conducted weekly design critiques to elevate team output."
     },
     {
       id: "exp-2",
       company: "Vercel Inc.",
       role: "Senior UI/UX Designer",
       dates: "2018 - 2021",
-      description: "Shipped the analytics dashboard (50k+ developers) and cut design-to-code handover by 35%."
+      description: "Designed and launched the analytics dashboard feature, utilized by 50k+ developers. Collaborated closely with frontend engineers to ensure pixel-perfect implementation using React and Tailwind CSS. Reduced design-to-code handover time by 35% through improved documentation workflows."
     },
     {
       id: "exp-3",
       company: "Dropbox",
       role: "Product Designer",
       dates: "2016 - 2018",
-      description: "Designed collaborative editing interactions for Paper, guided by research and usability testing."
+      description: "Contributed to the 'Paper' product team, focusing on collaborative text editing interactions. Conducted extensive user research and usability testing that informed key feature iterations."
     }
   ],
   education: [
@@ -37,35 +37,42 @@ export const INITIAL_RESUME_DATA: ResumeData = {
       school: "Carnegie Mellon University",
       degree: "Master of Human-Computer Interaction",
       dates: "2018 - 2019",
-      description: "Cognitive psychology and voice interfaces. Capstone sponsored by Google."
+      description: "Specialized in Cognitive Psychology and Voice User Interfaces. Capstone project sponsored by Google."
     },
     {
       id: "edu-2",
       school: "Rhode Island School of Design",
       degree: "BFA in Graphic Design",
       dates: "2014 - 2018",
-      description: "Graduated with honors. Focus on typography and interaction design."
+      description: "Graduated with Honors. Focus on Typography and Interaction Design. President of the Design & Tech Club."
     }
   ],
   skills: [
-    "Figma", "Adobe CC", "Prototyping", "Design Systems",
-    "HTML/CSS", "React", "TypeScript", "Tailwind CSS",
-    "User Research", "A/B Testing", "Accessibility", "Data Visualization"
+    "Figma", "Adobe CC", "Prototyping", "Design Systems", "Motion Design", "Spline (3D)",
+    "HTML/CSS", "React", "TypeScript", "Tailwind CSS", "Git/GitHub", "Storybook",
+    "User Research", "A/B Testing", "Agile/Scrum", "Accessibility (WCAG)", "Data Visualization"
   ],
   projects: [
     {
       id: "proj-1",
       name: "ZenFocus",
       link: "zenfocus.app",
-      description: "A minimal macOS focus timer. Product Hunt #1 Product of the Day.",
-      technologies: ["Swift", "SwiftUI"]
+      description: "A minimal productivity timer app for macOS that helps users maintain flow state. Featured on Product Hunt #1 Product of the Day.",
+      technologies: ["Swift", "SwiftUI", "CoreData"]
     },
     {
       id: "proj-2",
       name: "Lumina UI Kit",
       link: "github.com/alexchen/lumina",
-      description: "Open-source accessible React components, used by 2,000+ developers.",
-      technologies: ["React", "TypeScript", "Tailwind"]
+      description: "An open-source React component library focused on accessibility and dark mode support. Used by 2,000+ developers.",
+      technologies: ["React", "TypeScript", "Tailwind", "Radix UI"]
+    },
+    {
+      id: "proj-3",
+      name: "Climate Lens",
+      link: "climatelens.org",
+      description: "Interactive data visualization dashboard tracking global carbon emission trends. Winner of the 2020 Data Viz Hackathon.",
+      technologies: ["D3.js", "WebGL", "Next.js"]
     }
   ]
 };
